@@ -32,11 +32,38 @@ body {
     align-items: center;
 }
 
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
     color: white;
     letter-spacing: 2px;
+}
+
+.subscribe-btn {
+    background-color: #ff0000;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+.subscribe-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
 }
 
 .nav-links {
@@ -59,10 +86,32 @@ body {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
     color: white;
     padding: 150px 20px;
     text-align: center;
     animation: fadeIn 0.8s ease-in;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/></svg>');
+    background-size: cover;
+    opacity: 0.1;
+    filter: blur(8px);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
@@ -94,6 +143,121 @@ body {
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Texture Packs Section */
+.texture-packs {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+}
+
+.texture-packs h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.texture-packs > .container > p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+}
+
+.packs-scroll {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 2rem 0;
+    scroll-behavior: smooth;
+}
+
+.packs-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.packs-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.packs-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+}
+
+.pack-card {
+    min-width: 280px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    border: 2px solid #667eea;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: fadeIn 0.6s ease-in;
+}
+
+.pack-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    border-color: #764ba2;
+}
+
+.pack-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.pack-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pack-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #667eea;
+}
+
+.pack-card p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.credit {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    font-style: italic;
 }
 
 /* About Section */
@@ -218,6 +382,11 @@ footer {
         font-size: 1.1rem;
     }
 
+    .logo-section {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
     .nav-links {
         gap: 1rem;
     }
@@ -227,7 +396,16 @@ footer {
     }
 
     .about h2,
-    .contact h2 {
+    .contact h2,
+    .texture-packs h2 {
         font-size: 2rem;
+    }
+
+    .packs-scroll {
+        gap: 1rem;
+    }
+
+    .pack-card {
+        min-width: 250px;
     }
 }
