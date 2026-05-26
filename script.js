@@ -31,9 +31,13 @@ document.querySelectorAll('.feature-card').forEach(card => {
     observer.observe(card);
 });
 
+document.querySelectorAll('.pack-card').forEach(card => {
+    observer.observe(card);
+});
+
 // CTA Button interaction
 document.querySelector('.cta-button').addEventListener('click', function() {
-    document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('#textures').scrollIntoView({ behavior: 'smooth' });
 });
 
 // Add scroll effect to navbar
