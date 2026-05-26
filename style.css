@@ -4,16 +4,41 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a1a2e" width="1200" height="800"/><rect fill="%23ff6b35" x="300" y="200" width="100" height="100" opacity="0.3"/><rect fill="%2300d4ff" x="100" y="100" width="150" height="150" opacity="0.2"/><circle cx="900" cy="400" r="80" fill="%2300ff88" opacity="0.2"/></svg>');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 26, 46, 0.85);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 2;
 }
 
 /* Navigation */
@@ -23,7 +48,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar .container {
@@ -85,46 +110,27 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background-attachment: fixed;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
     color: white;
     padding: 150px 20px;
     text-align: center;
     animation: fadeIn 0.8s ease-in;
     position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/></svg>');
-    background-size: cover;
-    opacity: 0.1;
-    filter: blur(8px);
-    z-index: 0;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
+    backdrop-filter: blur(5px);
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     opacity: 0.95;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
@@ -137,19 +143,20 @@ body {
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Texture Packs Section */
 .texture-packs {
     padding: 80px 20px;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: rgba(26, 26, 46, 0.9);
     color: white;
+    position: relative;
 }
 
 .texture-packs h2 {
@@ -201,11 +208,12 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
     animation: fadeIn 0.6s ease-in;
+    backdrop-filter: blur(5px);
 }
 
 .pack-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
     border-color: #764ba2;
 }
 
@@ -263,7 +271,8 @@ body {
 /* About Section */
 .about {
     padding: 80px 20px;
-    background: #f8f9fa;
+    background: rgba(248, 249, 250, 0.95);
+    position: relative;
 }
 
 .about h2 {
@@ -317,21 +326,25 @@ body {
 
 /* Contact Section */
 .contact {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
     color: white;
     padding: 80px 20px;
     text-align: center;
+    position: relative;
+    backdrop-filter: blur(5px);
 }
 
 .contact h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .contact > .container > p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     opacity: 0.95;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .contact-button {
@@ -344,20 +357,21 @@ body {
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .contact-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Footer */
 footer {
-    background: #222;
+    background: rgba(34, 34, 34, 0.95);
     color: white;
     text-align: center;
     padding: 2rem;
+    position: relative;
 }
 
 /* Animations */
